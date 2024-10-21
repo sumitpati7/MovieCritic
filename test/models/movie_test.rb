@@ -14,6 +14,7 @@
 #  vote_count     :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  backdrop_path  :string
 #
 require "test_helper"
 

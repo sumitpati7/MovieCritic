@@ -1,2 +1,66 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<div class="img w-full h-[75vh] relative" style = "text-shadow: 1px 1px black">
+    <%backdrop_path = "https://image.tmdb.org/t/p/w200#{@found_movie["backdrop_path"]}"%>
+    <%poster_path = "https://image.tmdb.org/t/p/w200#{@found_movie["poster_path"]}"%>
+          <img
+            src="<%=backdrop_path%>"
+            alt="movie backdrop"
+            class="w-full h-full blur-md opacity-70"
+          />
+          <div class="absolute w-full px-16 bottom-16 md:flex flex-col md:max-h-[400px] md:flex-row">
+            <img
+              class="mx-auto w-4/5 h-4/5 md:h-full md:w-full max-h-[400px] max-w-[265px] md:mx-0"
+              src="<%=poster_path%>"
+              alt="<%@found_movie["original_title"]%>"
+            />
+            <div class="description pl-16 hidden md:inline">
+              <a
+                href={movie_detail.homepage}
+                target="_blank"
+                rel="noreferrer"
+                class="text-4xl xl:text-7xl mb-8 text-[#fff] font-semibold font-[Poppins]"
+              >
+                <%=@found_movie["original_title"]%>
+              </a>
+              <br />
+              <br />
+              <p class="text-[#fff] text-sm lg:text-lg w-4/5">
+                <%=@found_movie["overview"]%>
+              </p>
+              <table class="w-1/2 text-[#fff] text-left mt-4">
+                <thead></thead>
+                <tbody>
+                  <tr>
+                    <th>Vote Count</th>
+                    <td><%=@found_movie["vote_count"]%></td>
+                  </tr>
+                  <tr class="mt-4">
+                    <th>Vote Rating</th>
+                    <td><%=@found_movie["vote_count"]%></td>
+                  </tr>
+                  <tr class="mt-4">
+                    <th>Status</th>
+                    <td><%=@found_movie["status"]%></td>
+                  </tr>
+                  <tr class="mt-4">
+                    <th>Runtime</th>
+                    <td><%=@found_movie["runtime"]%> mins</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="buttons flex flex-col justify-center items-center min-w-max">
+              <a
+                href={movie_detail.homepage}
+                class="p-4 text-center text-[#fff] border-2 border-[#fff] m-2 w-full rounded-lg"
+              >
+                Watch Trailer
+              </a>
+              <a
+                href={movie_detail.homepage}
+                class="p-4 text-center text-[#fff] border-2 border-[#fff] m-2 w-full rounded-lg"
+              >
+                Watch Movie Now
+              </a>
+            </div>
+          </div>
+        </div>

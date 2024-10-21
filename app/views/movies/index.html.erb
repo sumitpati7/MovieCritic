@@ -2,8 +2,7 @@
 <div class="grid w-full grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
     <% @movies.each do |movie|%>
         <% poster_path = "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}"%>
-        <% navigate_path = "/movies/#{movie["id"]}"%>
-        <a href="<%=navigate_path%>">
+        <a class="w-[150px] md:w-[300px]" href="<%=movie_path(movie["id"])%>">
             <div class="movie w-[150px] md:w-[300px] float-left pr-3 my-4">
                 <div
                   class="movie-image float-left w-[150px] md:w-[300px] h-[225px] md:h-[450px] relative group"
@@ -13,7 +12,7 @@
                   >
                     <span class="text-[12px] md:text-sm text-white">
                       Description: <%= movie["overview"]%> <br />
-                      Release Date: <%=movie["status"]%>
+                      Release Date: <%=movie["release_date"]%>
                     </span>
                   </span>
                   <img
