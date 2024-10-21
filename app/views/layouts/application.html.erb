@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Moviecritic" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,6 +19,6 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="w-[90%] mx-auto"><%= yield %></div>
   </body>
 </html>

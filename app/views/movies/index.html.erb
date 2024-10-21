@@ -1,0 +1,39 @@
+<h1 class="text-6xl font-bold font-montserrat">Movies</h1>
+<div class="grid w-full grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <% @movies.each do |movie|%>
+        <% poster_path = "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}"%>
+        <% navigate_path = "/movies/#{movie["id"]}"%>
+        <a href="<%=navigate_path%>">
+            <div class="movie w-[150px] md:w-[300px] float-left pr-3 my-4">
+                <div
+                  class="movie-image float-left w-[150px] md:w-[300px] h-[225px] md:h-[450px] relative group"
+                >
+                  <span
+                    class="play absolute w-[150px] p-4 md:w-[300px] h-[225px] md:h-[450px] block z-[2] cursor-pointer hidden group-hover:bg-black group-hover:bg-opacity-70 group-hover:block left-0 top-0 overflow-y-auto"
+                  >
+                    <span class="text-[12px] md:text-sm text-white">
+                      Description: <%= movie["overview"]%> <br />
+                      Release Date: <%=movie["status"]%>
+                    </span>
+                  </span>
+                  <img
+                    class="w-[150px] md:w-[300px] h-[225px] md:h-[450px]"
+                    src="<%=poster_path%>"
+                    alt=""
+                  />
+                </div>
+                <div class="rating float-left w-full text-[12px]">
+                  <div class="w-full pt-2 text-sm font-semibold font-[poppins]">
+                    <%=movie["original_title"]%>
+                  </div>
+                  <p class="float-left  text-black font-[bold]">RATING</p>
+                  <div class="stars float-left h-full flex items-center ml-0.5">
+                  </div>
+                  <span class="comments float-right pl-3">
+                    <%=movie["vote_average"]%>
+                  </span>
+                </div>
+              </div>
+        </a>
+    <%end%>
+</div>
