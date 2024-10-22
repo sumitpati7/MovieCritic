@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
   
   def show
     tmdb_movie_id = params[:id]
-    @found_movie = Movie.includes(:reviews).find_by(tmdb_id: tmdb_movie_id)
+    @found_movie = Movie.includes(reviews: :user).find_by(tmdb_id: tmdb_movie_id)
     if !@found_movie
       @api_key = api_key
       @movie_resp = HTTP.get("https://api.themoviedb.org/3/movie/#{tmdb_movie_id}?language=en-US&api_key=#{@api_key}").body.to_s
@@ -25,7 +25,9 @@ class MoviesController < ApplicationController
         vote_count: @found_movie["vote_count"],
         backdrop_path: @found_movie["backdrop_path"],
       })
+      @found_movie = Movie.includes(reviews: :user).find_by(tmdb_id: @found_movie["id"])
     end
-    @comments = @found_movie.reviews
+    @comments = @found_movie.reviews.includes(:user)
+    @review = Review.new
   end
 end
