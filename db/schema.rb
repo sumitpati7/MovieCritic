@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_21_104428) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_22_022211) do
   create_table "movies", force: :cascade do |t|
     t.string "original_title"
     t.text "overview"
@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_104428) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_name"
   end
 
   add_foreign_key "reviews", "movies"

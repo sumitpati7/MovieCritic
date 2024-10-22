@@ -17,5 +17,5 @@
 #  backdrop_path  :string
 #
 class Movie < ApplicationRecord
-  has_many :review
+  has_many :reviews
 end
