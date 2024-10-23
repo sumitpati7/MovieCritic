@@ -2,11 +2,24 @@
 <div class="w-full py-4 border-solid border-b border-[#d9dbe9] group">
 <div class="commentor flex justify-between h-[30px] md:h-[50px] ">
     <div class="flex items-center">
-        <div class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] bg-green-700 text-lg md:text-2xl font-bold text-black rounded-full mr-2 md:mr-4 flex justify-center items-center">
+        <div class="w-[30px] h-[30px] md:w-[50px] md:h-[50px] bg-green-700 text-lg md:text-2xl font-bold text-black rounded-full mr-2 md:mr-4 flex justify-center items-center cursor-pointer">
             <%=review.user["user_name"][0]%>
         </div>
-        <div class="author h-full flex items-center font-semibold justify-center">
-            <%=review.user["user_name"]%>
+        <div class="author h-full">
+            <div class="font-bold cursor-pointer"><%=review.user["user_name"]%></div>
+            <div class="text-[#a6a8b6] text-sm">
+                <% time=Time.current-review.updated_at %>
+                <% if time>86400%>
+                <% time = review.updated_at.strftime("%Y/%m/%d %I:%M%p")%>
+                <%=time%>
+                <%elsif time>3600%>
+                <%time = time/3600%>
+                <%=time.to_i%> hrs ago
+                <%else%>
+                <%time = time/60%>
+                <%=time.to_i%> mins ago
+                <%end%>
+            </div>
         </div>
     </div>
     <div class="delete flex items-center">
@@ -18,7 +31,7 @@
 </div>
     <div
         id="comment"
-        class="comment text-sm max-h-[150px] overflow-y-auto"
+        class="comment ml-[66px] text-sm max-h-[150px] overflow-y-auto"
         ><%= review["comment"]%>
     </div>
 </div>

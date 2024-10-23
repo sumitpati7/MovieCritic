@@ -78,17 +78,24 @@
         <div>No Comments found! <a href="#comment_add">Be the first one to comment</a></div>
       <%end%>
     <div class="p-4 border border-solid border-[#d9dbe9] my-4 rounded-lg">
-      <div class="text-3xl font-semibold text-red-800">Comment</div>
+      <div id="comment_add" class="text-3xl font-semibold text-red-800">Comment</div>
+      <% user = User.find(rand(1...User.count))%>
       <%=simple_form_for @review, html: {
-                      class: "quote form", 
+                      class: "quote form",
                     }, method: :post do |f| %>
         <%=f.input :comment, placeholder: 'Add your comment here...', input_html: {class: 'block w-full p-4 text-gray-900 border border-gray-300 rounded-lg text-base focus:ring-blue-500 bg-[#fefefe] focus:border-blue-500 w-full h-[150px] my-4'}, label_html: {class: 'hidden'}%>
         <%=f.input :rating,placeholder: 'Enter your rating...', input_html: {class: 'block w-full p-4 text-gray-900 border border-gray-300 rounded-lg text-base focus:ring-blue-500 bg-[#fefefe] focus:border-blue-500 w-full h-[45px] my-4'}, label_html: {class: 'hidden'}%>
         <%=f.input :movie_id, label_html: {class: 'hidden'}, input_html: {class: 'hidden', value: @found_movie.id}%>
-        <%=f.input :user_id, label_html: {class: 'hidden'}, input_html: {class: 'hidden', value: 1}%>
-        <div class="flex justify-end"><%=f.submit "Comment", class: 'border border-solid border-[#d9dbe9] rounded-lg p-2 my-2 hover:bg-gray-200'%></div>
+        <%=f.input :user_id, label_html: {class: 'hidden'}, input_html: {class: 'hidden', value: user.id}%>
+        <div class="flex justify-end"><%=f.submit "Comment", class: 'border border-solid border-[#d9dbe9] rounded-lg p-2 my-2 hover:bg-gray-200 cursor-pointer'%></div>
       <%end%>
     </div>
   </div>
 </div>
+<script>
+    const form = document.getElementById('reviewForm');
+    form.addEventListener('submit', function(event) {
+      form.reset();
+    });
+</script>
 
