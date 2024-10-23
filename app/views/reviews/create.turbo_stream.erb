@@ -1,3 +1,4 @@
 <%= turbo_stream.prepend "comments" do%>   
    <%= render 'shared/review', review: @review %>
 <%end%>
+<%= turbo_stream.update Review.new, "New Content Here"%>

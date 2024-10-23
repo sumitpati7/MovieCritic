@@ -1,4 +1,4 @@
-<h1 class="text-6xl font-bold font-montserrat">Movies</h1>
+<h1 class="text-6xl font-bold font-montserrat text-red-800">Movies</h1>
 <div class="grid w-full grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
     <% @movies.each do |movie|%>
         <% poster_path = "https://image.tmdb.org/t/p/w200#{movie["poster_path"]}"%>

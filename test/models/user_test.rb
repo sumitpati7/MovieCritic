@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_name  :string
+#  user_color :string
 #
 require "test_helper"
 

@@ -1,4 +1,4 @@
-<div class="img w-full relative" style = "text-shadow: 1px 1px black">
+<div class="img w-full relative h-[75vh]" style = "text-shadow: 1px 1px black">
     <%backdrop_path = "https://image.tmdb.org/t/p/w200#{@found_movie["backdrop_path"]}"%>
     <%poster_path = "https://image.tmdb.org/t/p/w200#{@found_movie["poster_path"]}"%>
           <img
@@ -81,10 +81,10 @@
       <div id="comment_add" class="text-3xl font-semibold text-red-800">Comment</div>
       <% user = User.find(rand(1...User.count))%>
       <%=simple_form_for @review, html: {
-                      class: "quote form",
+                      class: "quote form", id: "quote_form",
                     }, method: :post do |f| %>
         <%=f.input :comment, placeholder: 'Add your comment here...', input_html: {class: 'block w-full p-4 text-gray-900 border border-gray-300 rounded-lg text-base focus:ring-blue-500 bg-[#fefefe] focus:border-blue-500 w-full h-[150px] my-4'}, label_html: {class: 'hidden'}%>
-        <%=f.input :rating,placeholder: 'Enter your rating...', input_html: {class: 'block w-full p-4 text-gray-900 border border-gray-300 rounded-lg text-base focus:ring-blue-500 bg-[#fefefe] focus:border-blue-500 w-full h-[45px] my-4'}, label_html: {class: 'hidden'}%>
+        <%=f.input :rating,placeholder: 'Enter your rating...', input_html: {type:'range',class: 'block w-full text-gray-900 border border-gray-300 rounded-lg text-base focus:ring-blue-500 bg-[#fefefe] focus:border-blue-500 w-full h-[45px] my-4'}, label_html: {class: 'hidden'}%>
         <%=f.input :movie_id, label_html: {class: 'hidden'}, input_html: {class: 'hidden', value: @found_movie.id}%>
         <%=f.input :user_id, label_html: {class: 'hidden'}, input_html: {class: 'hidden', value: user.id}%>
         <div class="flex justify-end"><%=f.submit "Comment", class: 'border border-solid border-[#d9dbe9] rounded-lg p-2 my-2 hover:bg-gray-200 cursor-pointer'%></div>
