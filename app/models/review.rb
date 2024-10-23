@@ -11,6 +11,12 @@
 #  updated_at :datetime         not null
 #
 class Review < ApplicationRecord
+  validates :rating, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 0, 
+  less_than_or_equal_to: 10 
+}
+
   belongs_to :movie
   belongs_to :user
 end

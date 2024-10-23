@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   resources :movies, only: %i[index show]
 
-  resources :reviews, only: %i[create]
+  resources :reviews, only: %i[create destroy]
 end

@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
       })
       @found_movie = Movie.includes(reviews: :user).find_by(tmdb_id: @found_movie["id"])
     end
-    @comments = @found_movie.reviews.includes(:user)
+    @reviews = @found_movie.reviews.includes(:user).reverse
     @review = Review.new
   end
 end
